@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace FilamentSound\FilamentSound\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentSoundCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-sound';
 
     public $description = 'My command';
 

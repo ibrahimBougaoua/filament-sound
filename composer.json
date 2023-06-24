@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ibrahimbougaoua/filament-sound",
+    "description": "The package provides a simple and convenient way to incorporate auditory cues into your application's user experience. By utilizing the Web Audio API and event listeners, FilamentSound detects successful CRUD operations and triggers the corresponding sound effect in response. This helps users receive immediate feedback and acknowledgment when performing actions like creating new records, updating existing data, or deleting entries.",
     "keywords": [
-        ":vendor_name",
+        "ibrahimBougaoua",
         "laravel",
-        ":package_slug"
+        "filament-sound"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ibrahimbougaoua/filament-sound",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Ibrahim",
+            "email": "ibrahim.bougaoua@etu.usthb.dz",
             "role": "Developer"
         }
     ],
@@ -30,18 +30,17 @@
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "spatie/laravel-ray": "^1.26"
+        "phpstan/phpstan-phpunit": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "FilamentSound\\FilamentSound\\": "src/",
+            "FilamentSound\\FilamentSound\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "FilamentSound\\FilamentSound\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -61,10 +60,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "FilamentSound\\FilamentSound\\FilamentSoundServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentSound": "FilamentSound\\FilamentSound\\Facades\\FilamentSound"
             }
         }
     },
