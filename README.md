@@ -1,11 +1,17 @@
-# The package provides a simple and convenient way to incorporate auditory cues into your application's user experience. By utilizing the Web Audio API and event listeners, FilamentSound detects successful CRUD operations and triggers the corresponding sound effect in response. This helps users receive immediate feedback and acknowledgment when performing actions like creating new records, updating existing data, or deleting entries.
+# Filament Sound
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ibrahimbougaoua/filament-sound.svg?style=flat-square)](https://packagist.org/packages/ibrahimbougaoua/filament-sound)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ibrahimbougaoua/filament-sound/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/ibrahimbougaoua/filament-sound/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ibrahimbougaoua/filament-sound/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ibrahimbougaoua/filament-sound/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ibrahimbougaoua/filament-sound.svg?style=flat-square)](https://packagist.org/packages/ibrahimbougaoua/filament-sound)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+FilamentSound is a Laravel package that enhances the Filament CRUD framework by adding sound-playing functionality. It allows developers to integrate audio notifications or feedback into their applications following CRUD operations. With FilamentSound, you can configure the package to play custom sound effects, such as success chimes or error alerts, after data creation, update, or deletion.
+
+The package provides a simple and convenient way to incorporate auditory cues into your application's user experience. By utilizing the Web Audio API and event listeners, FilamentSound detects successful CRUD operations and triggers the corresponding sound effect in response. This helps users receive immediate feedback and acknowledgment when performing actions like creating new records, updating existing data, or deleting entries.
+
+FilamentSound includes a configuration file that allows developers to specify the path to their sound files or customize other settings. The package's assets, including the provided sound files, can be easily published and integrated into the Laravel application using Laravel's asset publishing feature.
+
+With FilamentSound, you can enhance the interactivity and user engagement of your Filament-powered applications by incorporating audio notifications, providing a more immersive and dynamic user experience.
 
 ## Support us
 
