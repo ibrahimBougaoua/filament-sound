@@ -8,11 +8,23 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('filament_sound_table', function (Blueprint $table) {
+        Schema::create('filament_sound', function (Blueprint $table) {
             $table->id();
+            $table->string('model');
+            $table->boolean("created")->default(true);
+            $table->boolean("updated")->default(true);
+            $table->boolean("deleted")->default(true);
+            $table->boolean("restored")->default(true);
+            $table->boolean('status')->default(true);
+            $table->timestamps();
+        });
 
-            // add fields
-
+        Schema::create('filament_sound_setting', function (Blueprint $table) {
+            $table->id();
+            $table->string("created")->nullable();
+            $table->string("updated")->nullable();
+            $table->string("deleted")->nullable();
+            $table->string("restored")->nullable();
             $table->timestamps();
         });
     }
