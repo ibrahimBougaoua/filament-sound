@@ -12,6 +12,7 @@ class Sound extends Model
     protected $table = 'filament_sound';
 
     protected $fillable = [
+        "name",
         "model",
         "created",
         "updated",

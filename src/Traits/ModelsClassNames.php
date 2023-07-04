@@ -6,7 +6,7 @@ use Str;
 
 trait ModelsClassNames {
 
-    public static function getAllModelsClassNames(bool $full = true) : array
+    public static function getAllModelsClassNames() : array
     {
         $modelsPath = app_path('Models');
 
@@ -20,11 +20,22 @@ trait ModelsClassNames {
             $className = Str::studly($fileName);
             
             if (class_exists("App\\Models\\{$className}") && is_subclass_of("App\\Models\\{$className}", 'Illuminate\Database\Eloquent\Model')) {
-                $classList[] = $full ? "App\\Models\\".$className : $className;
+                $classList[] = $className;
             }
         }
 
         return $classList;
     }
 
+    public static function prepareModelsClassNames( array $names = [] ) : array
+    {
+        $classes = [];
+
+        foreach($names as $name)
+        {
+            $classes[] = "App\\Models\\".$name;
+        }
+
+        return $classes;
+    }
 }

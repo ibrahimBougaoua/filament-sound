@@ -6,11 +6,12 @@ use FilamentSound\FilamentSound\Models\Sound;
 
 trait InsertModelsNames {
 
-    public static function insertAllModelsNames(array $models = []) : void
+    public static function insertAllModelsNames(array $names = []) : void
     {
-        foreach ($models as $model) {
+        foreach ($names as $name) {
             Sound::firstOrCreate([
-                "model" => $model
+                "name" => $name,
+                "model" => "App\\Models\\".$name
             ]);
         }
     }

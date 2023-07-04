@@ -29,7 +29,7 @@ class SoundResource extends Resource
         ->schema([
             Forms\Components\Card::make()
             ->schema([
-                    TextInput::make('model')
+                    TextInput::make('name')
                     ->label('Name')
                     ->disabled()
                     ->columnSpan([
@@ -76,7 +76,7 @@ class SoundResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('model')->label('Name')->icon('heroicon-o-document-text')->sortable()->searchable(),
+                TextColumn::make('name')->label('Name')->icon('heroicon-o-document-text')->sortable()->searchable(),
                 IconColumn::make('status')
                 ->label('Status')->boolean()
                 ->trueIcon('heroicon-o-badge-check')

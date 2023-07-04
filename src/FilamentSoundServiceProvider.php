@@ -2,17 +2,23 @@
 
 namespace FilamentSound\FilamentSound;
 
+use Filament\Facades\Filament;
 use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
+use FilamentSound\FilamentSound\Models\SoundSetting;
 use FilamentSound\FilamentSound\Observers\GeneralObserver;
 use FilamentSound\FilamentSound\Resources\SoundResource;
 use FilamentSound\FilamentSound\Traits\ModelsClassNames;
-use FilamentSound\FilamentSound\Traits\InsertModelsNames;
 use Spatie\LaravelPackageTools\Package;
 use FilamentSound\FilamentSound\Commands\FilamentSoundCommand;
+use FilamentSound\FilamentSound\Observers\SettingObserver;
 
 class FilamentSoundServiceProvider extends PluginServiceProvider
 {
+    protected array $scripts = [
+        'filament-sound-js' => __DIR__ . '/../dist/script.js',
+    ];
+
     protected array $resources = [
         SoundResource::class,
     ];
@@ -26,18 +32,29 @@ class FilamentSoundServiceProvider extends PluginServiceProvider
                 ->icon('heroicon-s-cog'),
         ];
     }
-
+    
     public function packageBooted(): void
     {
+        parent::packageBooted();
+        
+        //FilamentSound::resetSettings();
+
         $classList = ModelsClassNames::getAllModelsClassNames();
+
+        //InsertModelsNames::insertAllModelsNames($classList);
+
+        $classList = ModelsClassNames::prepareModelsClassNames($classList);
 
         foreach ($classList as $className) {
             $className::observe(GeneralObserver::class);
         }
+        
+        if( FilamentSound::hasObserved() )
+            Filament::serving(fn () => \FilamentSound\FilamentSound\FilamentSound::initComponent());
 
-        InsertModelsNames::insertAllModelsNames(ModelsClassNames::getAllModelsClassNames(false));
+        //SoundSetting::observe(SettingObserver::class);
     }
-
+    
     public function configurePackage(Package $package): void
     {
         /*

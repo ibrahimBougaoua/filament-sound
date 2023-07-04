@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('filament_sound', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('model');
             $table->boolean("created")->default(true);
             $table->boolean("updated")->default(true);
