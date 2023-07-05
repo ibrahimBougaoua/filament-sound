@@ -11,6 +11,7 @@ use FilamentSound\FilamentSound\Http\Livewire\Audio\Deleted;
 use FilamentSound\FilamentSound\Http\Livewire\Audio\Restored;
 use FilamentSound\FilamentSound\Models\SoundSetting;
 use FilamentSound\FilamentSound\Observers\GeneralObserver;
+use FilamentSound\FilamentSound\Traits\InsertModelsNames;
 use FilamentSound\FilamentSound\Traits\ModelsClassNames;
 use Illuminate\Support\Facades\Schema;
 use Livewire\Livewire;
@@ -93,6 +94,15 @@ class FilamentSound
 
         foreach ($classList as $className)
             $className::observe(GeneralObserver::class);
+    }
+
+    public static function restoreSettings()
+    {
+        SoundSetting::truncate();
+
+        InsertModelsNames::insertAllModelsNames(
+            ModelsClassNames::getAllModelsClassNames()
+        );
     }
 
     public static function hasMigrated()

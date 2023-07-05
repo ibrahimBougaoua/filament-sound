@@ -4,6 +4,7 @@ namespace FilamentSound\FilamentSound\Resources\SoundResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;
 use Filament\Pages\Actions\Action;
+use FilamentSound\FilamentSound\FilamentSound;
 use FilamentSound\FilamentSound\Resources\SoundResource;
 
 class ListSounds extends ListRecords
@@ -15,13 +16,13 @@ class ListSounds extends ListRecords
         return [
             Action::make('restore_settings')
             ->label('Restore Settings')
-            ->action(fn () => dd(200))
+            ->action(fn () => FilamentSound::restoreSettings())
             ->color('success')
             ->icon('heroicon-s-check')
             ->requiresConfirmation()
-            ->modalHeading('Delete posts')
-            ->modalSubheading('Are you sure you\'d like to delete these posts? This cannot be undone.')
-            ->modalButton('Yes, delete them')
+            ->modalHeading('Restore Settings')
+            ->modalSubheading('Are you sure you\'d like to restore settings ?.')
+            ->modalButton('Yes, Restore them')
             ->disabled(config('filament-sound.restore_settings'))
         ];
     }
