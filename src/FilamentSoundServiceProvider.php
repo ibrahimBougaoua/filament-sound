@@ -9,6 +9,7 @@ use FilamentSound\FilamentSound\Resources\SoundResource;
 use Spatie\LaravelPackageTools\Package;
 use FilamentSound\FilamentSound\Commands\FilamentSoundCommand;
 use FilamentSound\FilamentSound\FilamentSound;
+use Illuminate\Support\Facades\Schema;
 
 class FilamentSoundServiceProvider extends PluginServiceProvider
 {
@@ -32,7 +33,7 @@ class FilamentSoundServiceProvider extends PluginServiceProvider
     
     public function packageBooted(): void
     {
-        if( config('filament-sound.audio') )
+        if( FilamentSound::hasMigrated() && config('filament-sound.audio') )
         {
             FilamentSound::prepareModelsClassNames();
 

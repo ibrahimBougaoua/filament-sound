@@ -12,6 +12,7 @@ use FilamentSound\FilamentSound\Http\Livewire\Audio\Restored;
 use FilamentSound\FilamentSound\Models\SoundSetting;
 use FilamentSound\FilamentSound\Observers\GeneralObserver;
 use FilamentSound\FilamentSound\Traits\ModelsClassNames;
+use Illuminate\Support\Facades\Schema;
 use Livewire\Livewire;
 
 class FilamentSound
@@ -92,5 +93,12 @@ class FilamentSound
 
         foreach ($classList as $className)
             $className::observe(GeneralObserver::class);
+    }
+
+    public static function hasMigrated()
+    {
+        if( Schema::hasTable('filament_sound_setting') && Schema::hasTable('filament_sound_setting') ) 
+            return true;
+        return false;
     }
 }
