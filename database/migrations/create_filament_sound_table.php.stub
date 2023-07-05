@@ -22,10 +22,10 @@ return new class extends Migration
 
         Schema::create('filament_sound_setting', function (Blueprint $table) {
             $table->id();
-            $table->string("created")->nullable();
-            $table->string("updated")->nullable();
-            $table->string("deleted")->nullable();
-            $table->string("restored")->nullable();
+            $table->boolean("created")->default(false);
+            $table->boolean("updated")->default(false);
+            $table->boolean("deleted")->default(false);
+            $table->boolean("restored")->default(false);
             $table->timestamps();
         });
     }

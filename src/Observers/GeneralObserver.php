@@ -13,6 +13,7 @@ class GeneralObserver
     public function __construct()
     {
         FilamentSound::resetSettings();
+        
         $this->soundSetting = SoundSetting::first();
     }
 

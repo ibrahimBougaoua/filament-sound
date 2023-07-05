@@ -19,7 +19,7 @@ class SoundResource extends Resource
 {
     protected static ?string $model = Sound::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-cog';
+    protected static ?string $navigationIcon = 'heroicon-s-play';
     
     protected static ?string $navigationGroup = 'Settings';
 

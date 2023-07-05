@@ -5,13 +5,10 @@ namespace FilamentSound\FilamentSound;
 use Filament\Facades\Filament;
 use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
-use FilamentSound\FilamentSound\Models\SoundSetting;
-use FilamentSound\FilamentSound\Observers\GeneralObserver;
 use FilamentSound\FilamentSound\Resources\SoundResource;
-use FilamentSound\FilamentSound\Traits\ModelsClassNames;
 use Spatie\LaravelPackageTools\Package;
 use FilamentSound\FilamentSound\Commands\FilamentSoundCommand;
-use FilamentSound\FilamentSound\Observers\SettingObserver;
+use FilamentSound\FilamentSound\FilamentSound;
 
 class FilamentSoundServiceProvider extends PluginServiceProvider
 {
@@ -29,30 +26,21 @@ class FilamentSoundServiceProvider extends PluginServiceProvider
             UserMenuItem::make()
                 ->label('Sounds')
                 ->url(route('filament.resources.sounds.index'))
-                ->icon('heroicon-s-cog'),
+                ->icon('heroicon-s-play'),
         ];
     }
     
     public function packageBooted(): void
     {
-        parent::packageBooted();
-        
-        //FilamentSound::resetSettings();
+        if( config('filament-sound.audio') )
+        {
+            FilamentSound::prepareModelsClassNames();
 
-        $classList = ModelsClassNames::getAllModelsClassNames();
-
-        //InsertModelsNames::insertAllModelsNames($classList);
-
-        $classList = ModelsClassNames::prepareModelsClassNames($classList);
-
-        foreach ($classList as $className) {
-            $className::observe(GeneralObserver::class);
+            if( FilamentSound::hasObserved() )
+                Filament::serving(fn () => FilamentSound::initComponent());
+            else if( config('filament-sound.browse_audio') )
+                Filament::serving(fn () => FilamentSound::callComponent());
         }
-        
-        if( FilamentSound::hasObserved() )
-            Filament::serving(fn () => \FilamentSound\FilamentSound\FilamentSound::initComponent());
-
-        //SoundSetting::observe(SettingObserver::class);
     }
     
     public function configurePackage(Package $package): void
