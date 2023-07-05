@@ -105,6 +105,13 @@ class FilamentSound
         );
     }
 
+    public static function insertAllModelsSoundSettings()
+    {
+        InsertModelsNames::insertAllModelsNames(
+            ModelsClassNames::getAllModelsClassNames()
+        );
+    }
+	
     public static function hasMigrated()
     {
         if( Schema::hasTable('filament_sound_setting') && Schema::hasTable('filament_sound_setting') ) 
