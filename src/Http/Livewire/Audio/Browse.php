@@ -2,6 +2,7 @@
 
 namespace FilamentSound\FilamentSound\Http\Livewire\Audio;
 
+use FilamentSound\FilamentSound\FilamentSound;
 use Livewire\Component;
 
 class Browse extends Component 

@@ -42,7 +42,7 @@ class FilamentSoundServiceProvider extends PluginServiceProvider
                 Filament::serving(fn () => FilamentSound::callComponent());
         }
     }
-    
+
     public function configurePackage(Package $package): void
     {
         /*

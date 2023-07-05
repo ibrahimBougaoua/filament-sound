@@ -4,6 +4,7 @@
 return [
     'navigation' => true,
     'user_menu_item' => true,
-    'audio' => true, // force disable
-    'browse_audio' => false,
+    'restore_settings' => false,// restore settings btn disable
+    'audio' => true, // audio disable
+    'browse_audio' => true,
 ];

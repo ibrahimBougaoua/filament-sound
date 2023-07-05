@@ -22,6 +22,7 @@ class ListSounds extends ListRecords
             ->modalHeading('Delete posts')
             ->modalSubheading('Are you sure you\'d like to delete these posts? This cannot be undone.')
             ->modalButton('Yes, delete them')
+            ->disabled(config('filament-sound.restore_settings'))
         ];
     }
 }

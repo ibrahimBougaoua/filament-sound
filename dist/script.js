@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    Livewire.emit('played')
     var audio = document.getElementById("audio");
-    if (audio)
-        audio.play();
+    if (audio) {
+        audio.play()
+    }
 })
