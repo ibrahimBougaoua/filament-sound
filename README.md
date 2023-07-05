@@ -38,6 +38,11 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'navigation' => true,
+    'user_menu_item' => true,
+    'restore_settings' => false,
+    'audio' => true,
+    'browse_audio' => true
 ];
 ```
 

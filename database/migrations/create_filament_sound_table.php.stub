@@ -29,8 +29,5 @@ return new class extends Migration
             $table->boolean("restored")->default(false);
             $table->timestamps();
         });
-
-        if( FilamentSound::hasMigrated() )
-            SoundSetting::create([]);
     }
 };

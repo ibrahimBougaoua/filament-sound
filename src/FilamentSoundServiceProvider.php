@@ -35,6 +35,14 @@ class FilamentSoundServiceProvider extends PluginServiceProvider
     {
         if( FilamentSound::hasMigrated() && config('filament-sound.audio') )
         {
+            if( ! SoundSetting::count() )
+                SoundSetting::create([
+                    "created" => 0,
+                    "updated" => 0,
+                    "deleted" => 0,
+                    "restored" => 0
+                ]);
+
             FilamentSound::prepareModelsClassNames();
 
             if( FilamentSound::hasObserved() )
