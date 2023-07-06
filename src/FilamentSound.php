@@ -100,6 +100,13 @@ class FilamentSound
     {
         SoundSetting::truncate();
 
+        SoundSetting::create([
+            "created" => 0,
+            "updated" => 0,
+            "deleted" => 0,
+            "restored" => 0
+        ]);
+        
         InsertModelsNames::insertAllModelsNames(
             ModelsClassNames::getAllModelsClassNames()
         );

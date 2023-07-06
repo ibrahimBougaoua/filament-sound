@@ -2,16 +2,15 @@
 
 namespace FilamentSound\FilamentSound;
 
+use FilamentSound\FilamentSound\Commands\FilamentSoundInstallCommand;
+use FilamentSound\FilamentSound\Commands\FilamentSoundRestoreSettingsCommand;
 use Filament\Facades\Filament;
 use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
 use FilamentSound\FilamentSound\Resources\SoundResource;
 use Spatie\LaravelPackageTools\Package;
-use FilamentSound\FilamentSound\Commands\FilamentSoundCommand;
 use FilamentSound\FilamentSound\FilamentSound;
 use FilamentSound\FilamentSound\Models\SoundSetting;
-use FilamentSound\FilamentSound\Models\Sound;
-use Illuminate\Support\Facades\Schema;
 
 class FilamentSoundServiceProvider extends PluginServiceProvider
 {
@@ -35,19 +34,8 @@ class FilamentSoundServiceProvider extends PluginServiceProvider
     
     public function packageBooted(): void
     {
-        if( FilamentSound::hasMigrated() && config('filament-sound.audio') )
+        if( FilamentSound::hasMigrated() && config('filament-sound.audio') && SoundSetting::count() > 0 )
         {
-            if( ! SoundSetting::count() )
-                SoundSetting::create([
-                    "created" => 0,
-                    "updated" => 0,
-                    "deleted" => 0,
-                    "restored" => 0
-                ]);
-
-            if( ! Sound::count() )
-				FilamentSound::insertAllModelsSoundSettings();
-    
             FilamentSound::prepareModelsClassNames();
 
             if( FilamentSound::hasObserved() )
@@ -69,6 +57,9 @@ class FilamentSoundServiceProvider extends PluginServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_filament_sound_table')
-            ->hasCommand(FilamentSoundCommand::class);
+            ->hasCommands([
+                FilamentSoundInstallCommand::class,
+                FilamentSoundRestoreSettingsCommand::class,
+            ]);
     }
 }

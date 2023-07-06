@@ -28,6 +28,18 @@ php artisan vendor:publish --tag="filament-sound-migrations"
 php artisan migrate
 ```
 
+You can install filament sound with:
+
+```bash
+php artisan filament-sound:install
+```
+
+You can restore filament sound settings with:
+
+```bash
+php artisan filament-sound:restore-settings
+```
+
 You can publish the config file with:
 
 ```bash
@@ -50,13 +62,6 @@ Optionally, you can publish the views using
 
 ```bash
 php artisan vendor:publish --tag="filament-sound-views"
-```
-
-## Usage
-
-```php
-$filamentSound = new FilamentSound\FilamentSound();
-echo $filamentSound->echoPhrase('Hello, FilamentSound!');
 ```
 
 ## Testing
